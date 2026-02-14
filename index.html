@@ -2,2144 +2,343 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- PWA Meta Tags -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1e90ff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%231e90ff%22>📱</text></svg>">
-    
-    <title>Apple of Fortune | Signals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Winwin Uzbekistan | BMW 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary: #1e90ff;
-            --primary-dark: #0066cc;
-            --secondary: #ffcc00;
-            --accent: #fd7e14;
-            --success: #4caf50;
-            --danger: #e74c3c;
-            --dark: #121212;
-            --darker: #0a0a0a;
-            --light: #ffffff;
-            --gray: #666666;
-            --card-bg: rgba(30, 30, 30, 0.7);
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background: var(--darker);
-            color: var(--light);
+            background: #000;
+            color: #fff;
             min-height: 100vh;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* Language Selector */
-        #languageSelector {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker);
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .language-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .language-logo i {
-            font-size: 36px;
-            color: white;
-        }
-
-        #languageTitle {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        #languageSubtitle {
-            font-size: 14px;
-            color: var(--gray);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .language-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .lang-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .lang-card .flag {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .lang-card .name {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--light);
-        }
-
-        /* Main Container */
-        .main-container {
-            display: none;
-            max-width: 100%;
-            min-height: 100vh;
-        }
-
-        .main-container.active {
-            display: block;
-        }
-
-        /* App Header */
-        .app-header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon i {
-            font-size: 20px;
-            color: white;
-        }
-
-        .logo-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Header Install Button */
-        .header-install-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .header-install-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(30, 144, 255, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 6px rgba(30, 144, 255, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(30, 144, 255, 0);
-            }
-        }
-        
-        .header-install-btn i {
-            font-size: 14px;
-        }
-        
-        .header-install-btn.hidden {
-            display: none;
-        }
-
-        /* Install Instructions Modal */
-        .install-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-        
-        .install-modal.active {
-            display: flex;
-        }
-        
-        .install-modal-content {
-            background: var(--darker);
-            border-radius: 20px;
-            padding: 24px;
-            max-width: 400px;
-            width: 100%;
-            border: 1px solid var(--glass-border);
-            text-align: center;
-        }
-        
-        .install-modal-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-        
-        .install-modal-icon i {
-            font-size: 28px;
-            color: white;
-        }
-        
-        .install-modal-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        
-        .install-modal-text {
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        .install-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 24px;
-            text-align: left;
-        }
-        
-        .install-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .step-number {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            color: white;
-            flex-shrink: 0;
-        }
-        
-        .step-text {
-            flex: 1;
-            color: var(--light);
-            font-size: 13px;
-            line-height: 1.4;
-        }
-        
-        .install-modal-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .install-modal-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .install-modal-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-        
-        .install-modal-secondary {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: var(--light);
-        }
-
-        /* Install Banner */
-        .install-banner {
-            position: fixed;
-            bottom: 70px;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 16px 20px;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 999;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .install-banner.active {
-            display: flex;
-        }
-        
-        .install-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-        
-        .install-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .install-icon i {
-            font-size: 20px;
-            color: white;
-        }
-        
-        .install-text h4 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        
-        .install-text p {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-        
-        .install-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .install-btn {
-            padding: 10px 18px;
-            background: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .install-cancel {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-        }
-
-        /* Main Actions */
-        .main-actions {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        .main-action-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .main-action-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .main-action-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .main-action-icon i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .main-action-content {
-            flex: 1;
-        }
-
-        .main-action-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .main-action-desc {
-            font-size: 12px;
-            color: var(--gray);
-            line-height: 1.4;
-        }
-
-        .main-action-arrow {
-            color: var(--gray);
-            font-size: 16px;
-        }
-
-        /* Install Action Card */
-        .install-action-card {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 0 20px 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            cursor: pointer;
-        }
-        
-        .install-action-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .install-action-icon i {
-            font-size: 24px;
-            color: white;
-        }
-        
-        .install-action-content {
-            flex: 1;
-        }
-        
-        .install-action-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 6px;
-        }
-        
-        .install-action-desc {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.4;
-        }
-        
-        .install-action-arrow {
-            color: white;
-            font-size: 20px;
-            opacity: 0.8;
-        }
-
-        /* User Stats */
-        .user-stats {
-            padding: 0 20px 20px;
-        }
-
-        .user-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .user-info {
-            margin-bottom: 20px;
-        }
-
-        .user-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .user-avatar i {
-            font-size: 20px;
-            color: white;
-        }
-
-        .user-details h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--light);
-            margin-bottom: 8px;
-        }
-
-        .user-id {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(30, 144, 255, 0.2);
-            color: var(--primary);
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .user-level {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--accent);
-            color: var(--dark);
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-left: 8px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .stat-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: var(--gray);
-            font-weight: 600;
-        }
-
-        /* Quick Actions */
-        .quick-actions {
-            padding: 0 20px 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .action-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 16px 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .action-icon {
-            width: 36px;
-            height: 36px;
-            margin: 0 auto 8px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .action-icon i {
-            font-size: 16px;
-            color: white;
-        }
-
-        .action-title {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .action-desc {
-            font-size: 10px;
-            color: var(--gray);
-            line-height: 1.3;
-        }
-
-        /* VIP Banner */
-        .vip-banner {
-            margin: 0 20px 20px;
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            border-radius: 16px;
-            padding: 16px;
+            padding-bottom: 95px; /* sticky tugma uchun joy */
             position: relative;
-            cursor: pointer;
         }
 
-        .vip-content {
+        /* FON – 50% shaffof, siz bergan rasm */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://tse4.mm.bing.net/th/id/OIP.ESXPPDthWCVEYQu9vkmHLQHaFj?cb=defcachec2&rs=1&pid=ImgDetMain&o=7&rm=3') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* ASOSIY KONTEYNER – ixcham */
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 15px 15px 20px;
+            z-index: 2;
+        }
+
+        /* ===== YASHIL AKSENTLAR ===== */
+        .green { color: #4caf50; }
+        .green-border { border: 2px solid #4caf50; }
+        .green-bg { background: #4caf50; color: #000; }
+        .glow { text-shadow: 0 0 8px #4caf50; }
+        .btn-green {
+            background: linear-gradient(145deg, #4caf50, #2e7d32);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 20px #4caf50;
+        }
+
+        /* ANIMATSIYALAR */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeInUp 0.6s ease forwards; }
+
+        /* HEADER – ixcham */
+        .header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            padding: 12px 18px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            border: 1px solid #4caf50;
+            box-shadow: 0 0 15px #4caf50;
         }
-
-        .vip-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .vip-icon i {
-            font-size: 20px;
-            color: white;
-        }
-
-        .vip-text h3 {
-            font-size: 14px;
+        .badge {
+            background: #4caf50;
+            color: #000;
             font-weight: 700;
-            color: white;
-            margin-bottom: 4px;
-        }
-
-        .vip-text p {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .vip-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        /* Stats Section */
-        .section-header {
-            padding: 0 20px 16px;
-        }
-
-        .section-title {
+            padding: 6px 16px;
+            border-radius: 40px;
             font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
+            box-shadow: 0 0 15px #4caf50;
         }
 
-        .stats-container {
-            padding: 0 20px 20px;
+        /* HERO BMW – ixcham va yorqin */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 35px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            border: 1px solid #4caf50;
+            animation: fadeInUp 0.7s;
         }
-
-        .stats-grid-small {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 16px;
+        .hero-img {
+            flex: 1 1 200px;
             text-align: center;
         }
+        .hero-img img {
+            max-width: 100%;
+            width: 280px;
+            border-radius: 25px;
+            filter: drop-shadow(0 0 20px #4caf50) brightness(1.3);
+            transition: transform 0.3s;
+        }
+        .hero-img img:hover { transform: scale(1.02) rotate(1deg); }
+        .hero-text {
+            flex: 1 1 220px;
+        }
+        .hero-text h1 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .hero-text h1 span { color: #4caf50; display: block; }
+        .hero-text .sub {
+            font-size: 16px;
+            border-left: 4px solid #4caf50;
+            padding-left: 12px;
+            margin: 10px 0;
+        }
 
-        .stat-card-header {
+        /* QADAMLAR – yanada ixcham */
+        .steps {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .stat-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stat-icon i {
-            font-size: 12px;
-            color: white;
-        }
-
-        .stat-card-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .stat-card-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .stat-card-label {
-            font-size: 10px;
-            color: var(--gray);
-            font-weight: 600;
-        }
-
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 1px solid var(--glass-border);
-            padding: 8px 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--gray);
-            text-decoration: none;
-            flex: 1;
-            padding: 6px 0;
-            cursor: pointer;
-        }
-
-        .nav-item.active {
-            color: var(--primary);
-        }
-
-        .nav-icon {
-            font-size: 18px;
-            margin-bottom: 2px;
-        }
-
-        .nav-text {
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        /* Page Containers */
-        .page-container {
-            display: none;
-            min-height: 100vh;
-            padding-bottom: 70px;
-        }
-
-        .page-container.active {
-            display: block;
-        }
-
-        .page-header {
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .page-back {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            cursor: pointer;
-        }
-
-        .page-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .page-content {
-            padding: 20px;
-        }
-
-        .page-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-icon i {
-            font-size: 20px;
-            color: white;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--light);
-        }
-
-        .card-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-            text-align: center;
-            margin: 16px 0;
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: var(--gray);
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .promo-code {
-            background: rgba(253, 126, 20, 0.1);
-            border: 1px dashed var(--accent);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
             margin: 20px 0;
         }
-
-        .promo-code .code {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 2px;
-        }
-
-        .promo-code .label {
-            font-size: 11px;
-            color: var(--gray);
-            margin-top: 8px;
-        }
-
-        /* Settings */
-        .settings-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .settings-item {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 16px;
+        .step {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 40px;
+            padding: 8px 18px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-
-        .settings-item-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .settings-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .settings-icon i {
-            font-size: 16px;
-            color: white;
-        }
-
-        .settings-text h4 {
-            font-size: 14px;
-            color: var(--light);
-            margin-bottom: 4px;
-        }
-
-        .settings-text p {
-            font-size: 11px;
-            color: var(--gray);
-        }
-
-        .settings-arrow {
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 12px;
+            gap: 8px;
+            border: 1px solid #4caf50;
             font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
+        }
+        .step i { font-size: 20px; color: #4caf50; }
+
+        /* PROMO KOD – pulsatsiya */
+        .promo-box {
+            background: #000;
+            border: 2px dashed #4caf50;
+            border-radius: 50px;
+            padding: 12px 25px;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
+            gap: 15px;
+            margin: 15px auto;
+            box-shadow: 0 0 20px #4caf50;
+            animation: pulse 2s infinite;
+        }
+        .promo-code {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #4caf50;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+        /* SOVG‘ALAR – grid ixcham */
+        .section-title {
+            font-size: 26px;
+            text-align: center;
+            margin: 30px 0 15px;
         }
-
-        .btn-secondary {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: var(--light);
+        .section-title span { color: #4caf50; }
+        .prize-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
+        .prize-card {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 25px;
+            padding: 15px 8px;
+            text-align: center;
+            border: 1px solid #4caf50;
+            transition: 0.3s;
+        }
+        .prize-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px #4caf50;
+        }
+        .prize-card i { font-size: 32px; color: #4caf50; margin-bottom: 8px; }
+        .prize-card h3 { font-size: 18px; }
+        .prize-card p { font-size: 14px; color: #ccc; }
 
-        /* Toast */
-        .toast {
+        /* DO‘STLAR BONUSI */
+        .friends {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 35px;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border: 1px solid #4caf50;
+        }
+        .friends h2 { font-size: 24px; color: #4caf50; }
+        .friends p { font-size: 16px; }
+
+        /* STICKY TUGMA – doimiy pastda */
+        .sticky-btn {
             position: fixed;
-            top: 80px;
-            right: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: var(--light);
-            font-size: 13px;
-            z-index: 10000;
-            max-width: 280px;
-            animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 600px;
+            z-index: 1000;
+            text-align: center;
+        }
+        .btn-reg {
+            display: block;
+            background: linear-gradient(145deg, #4caf50, #2e7d32);
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            padding: 16px 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 25px #4caf50;
+            border: 2px solid #8bc34a;
+            text-transform: uppercase;
+            transition: 0.2s;
+            animation: pulse 2s infinite;
+        }
+        .btn-reg i { margin-right: 10px; }
+        .btn-reg:hover { background: #66bb6a; transform: scale(1.02); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        .toast.success {
-            border-left: 4px solid var(--success);
-        }
-
-        .toast.error {
-            border-left: 4px solid var(--danger);
-        }
-
-        .toast.info {
-            border-left: 4px solid var(--primary);
-        }
-
-        /* Hidden */
-        .hidden {
-            display: none !important;
-        }
-
-        @media (max-width: 380px) {
-            .main-action-card, .install-action-card {
-                padding: 16px;
-            }
-            
-            .main-action-icon, .install-action-icon {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .main-action-title, .install-action-title {
-                font-size: 16px;
-            }
-            
-            .header-install-btn {
-                padding: 6px 12px;
-                font-size: 11px;
-            }
-            
-            .install-modal-content {
-                padding: 20px 16px;
-            }
-            
-            .install-modal-title {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .quick-actions {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* MOBIL UCHUN QO‘SHIMCHA IXCHAMLASH */
+        @media (max-width: 450px) {
+            .hero-text h1 { font-size: 28px; }
+            .promo-code { font-size: 26px; }
+            .btn-reg { font-size: 20px; padding: 14px; }
+            .step { font-size: 12px; padding: 6px 12px; }
+            .prize-card h3 { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <!-- Language Selector -->
-    <div id="languageSelector">
-        <div class="language-logo">
-            <i class="fas fa-trophy"></i>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header fade-up">
+            <span class="logo">WINWIN UZ</span>
+            <span class="badge"><i class="fas fa-car"></i> BMW 2026</span>
         </div>
-        <h2 id="languageTitle">Apple of Fortune</h2>
-        <p id="languageSubtitle">Tilni tanlang</p>
-        
-        <div class="language-grid">
-            <div class="lang-card" data-lang="uz">
-                <div class="flag">🇺🇿</div>
-                <div class="name">O'zbekcha</div>
-            </div>
-            <div class="lang-card" data-lang="ru">
-                <div class="flag">🇷🇺</div>
-                <div class="name">Русский</div>
-            </div>
-            <div class="lang-card" data-lang="en">
-                <div class="flag">🇺🇸</div>
-                <div class="name">English</div>
-            </div>
-            <div class="lang-card" data-lang="ar">
-                <div class="flag">🇸🇦</div>
-                <div class="name">العربية</div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Install Modal -->
-    <div class="install-modal" id="installModal">
-        <div class="install-modal-content">
-            <div class="install-modal-icon">
-                <i class="fas fa-download"></i>
+        <!-- HERO BMW -->
+        <div class="hero">
+            <div class="hero-img">
+                <img src="https://i.ibb.co/wVTfcFm/5778528650666904738.jpg" alt="BMW" onerror="this.src='https://via.placeholder.com/400?text=BMW'">
             </div>
-            <div class="install-modal-title" id="installModalTitle">Ilovani o'rnatish</div>
-            <div class="install-modal-text" id="installModalText">
-                Ilovani telefoniga o'rnating va tez kirish imkoniyatiga ega bo'ling
+            <div class="hero-text">
+                <h1><span>BMW</span> YUTIB OL!</h1>
+                <div class="sub">Raisboy yutdi – endi sizning imkoniyat</div>
+                <div style="background:#4caf50; color:#000; display:inline-block; padding:6px 20px; border-radius:40px; font-weight:700; margin-top:8px;">2026</div>
             </div>
-            
-            <div class="install-steps" id="installSteps">
-                <div class="install-step">
-                    <div class="step-number">1</div>
-                    <div class="step-text" id="step1Text">Ilova o'rnatish dialogi ochiladi</div>
-                </div>
-                <div class="install-step">
-                    <div class="step-number">2</div>
-                    <div class="step-text" id="step2Text">"O'rnatish" tugmasini bosing</div>
-                </div>
-                <div class="install-step">
-                    <div class="step-number">3</div>
-                    <div class="step-text" id="step3Text">Ilova uy ekraniga qo'shiladi</div>
-                </div>
+        </div>
+
+        <!-- QADAMLAR (ixcham) -->
+        <div class="steps">
+            <div class="step"><i class="fas fa-user-plus"></i> Ro‘yxat</div>
+            <div class="step"><i class="fas fa-coins"></i> $10 aylanma</div>
+            <div class="step"><i class="fas fa-fire"></i> Faollik</div>
+        </div>
+
+        <!-- PROMOKOD (pulsatsiya) -->
+        <div style="text-align:center;">
+            <div class="promo-box">
+                <span class="promo-code">win_21450</span>
             </div>
-            
-            <div class="install-modal-buttons">
-                <button class="install-modal-btn install-modal-secondary" id="installModalCancel">
-                    BEKOR QILISH
-                </button>
-                <button class="install-modal-btn install-modal-primary" id="installModalConfirm">
-                    O'RNATISH
-                </button>
-            </div>
+            <p style="color:#4caf50; font-size:14px; margin:5px 0 10px;">Ro‘yxatda kirit – imkoniyatni oshir</p>
+        </div>
+
+        <!-- SOVG‘ALAR (3 ta) -->
+        <h2 class="section-title"><span>100+</span> sovg‘alar</h2>
+        <div class="prize-grid">
+            <div class="prize-card"><i class="fas fa-laptop"></i><h3>MacBook</h3><p>15 dona</p></div>
+            <div class="prize-card"><i class="fas fa-mobile-alt"></i><h3>iPhone 17 Pro</h3><p>30 dona</p></div>
+            <div class="prize-card"><i class="fas fa-gift"></i><h3>Yana 100+</h3><p>qimmatbaho</p></div>
+        </div>
+
+        <!-- DO‘STLAR TAKLIFI -->
+        <div class="friends">
+            <i class="fas fa-user-friends" style="font-size:36px; color:#4caf50;"></i>
+            <h2>Do‘stlarni taklif</h2>
+            <p>Har bir taklif uchun ball – imkoniyat ortadi</p>
+            <p style="color:#4caf50;">@testuser</p>
+        </div>
+
+        <!-- DEPOSIT BONUS -->
+        <div style="background:rgba(0,0,0,0.7); border-radius:30px; padding:18px; text-align:center; border:1px solid #4caf50;">
+            <i class="fas fa-database" style="font-size:32px; color:#4caf50;"></i>
+            <p style="font-size:16px;"><span class="green">Ko‘p deposit</span> = ko‘p imkoniyat</p>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>Winwin Uzbekistan • 2026</p>
         </div>
     </div>
 
-    <!-- Install Banner -->
-    <div class="install-banner" id="installBanner">
-        <div class="install-content">
-            <div class="install-icon">
-                <i class="fas fa-download"></i>
-            </div>
-            <div class="install-text">
-                <h4 id="installTitle">Ilovani o'rnatish</h4>
-                <p id="installDesc">Tez kirish uchun ilovani telefoniga o'rnating</p>
-            </div>
-        </div>
-        <div class="install-actions">
-            <button class="install-btn" id="installButton">O'RNATISH</button>
-            <button class="install-btn install-cancel" id="cancelInstall">YOPISH</button>
-        </div>
+    <!-- STICKY REGISTER BUTTON (doimiy pastda) -->
+    <div class="sticky-btn">
+        <a href="https://refpa712080.pro/L?tag=d_4543807m_64485c_&site=4543807&ad=64485" class="btn-reg" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-hand-pointer"></i> RO‘YXATDAN O‘TISH
+        </a>
     </div>
-
-    <!-- Main Home Page -->
-    <div class="main-container" id="mainContainer">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-apple-alt"></i>
-                </div>
-                <div class="logo-text" id="logoText">Apple of Fortune</div>
-            </div>
-            
-            <div class="header-controls">
-                <!-- O'rnatish tugmasi -->
-                <button class="header-install-btn" id="headerInstallBtn">
-                    <i class="fas fa-download"></i>
-                    <span id="headerInstallText">O'RNATISH</span>
-                </button>
-                
-                <div class="header-btn" id="settingsBtn">
-                    <i class="fas fa-cog"></i>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Actions -->
-        <section class="main-actions">
-            <!-- Install Action Card -->
-            <div class="install-action-card" id="installActionCard">
-                <div class="install-action-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="install-action-content">
-                    <div class="install-action-title" id="installActionTitle">ILOVANI O'RNATISH</div>
-                    <div class="install-action-desc" id="installActionDesc">Ilovani telefoniga o'rnating va tez kirish imkoniyatiga ega bo'ling</div>
-                </div>
-                <div class="install-action-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <!-- Register Card -->
-            <div class="main-action-card" id="mainRegisterCard">
-                <div class="main-action-icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <div class="main-action-content">
-                    <div class="main-action-title" id="mainRegisterTitle">RO'YXATDAN O'TISH</div>
-                    <div class="main-action-desc" id="mainRegisterDesc">AIFUT promokodi bilan ro'yxatdan o'ting va yuqori aniqlikdagi signallarga ega bo'ling</div>
-                </div>
-                <div class="main-action-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <!-- Signal Card -->
-            <div class="main-action-card" id="mainSignalCard">
-                <div class="main-action-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <div class="main-action-content">
-                    <div class="main-action-title" id="mainSignalTitle">SIGNAL OLISH</div>
-                    <div class="main-action-desc" id="mainSignalDesc">Yuqori aniqlikdagi signallarni olish uchun o'yinga kirish</div>
-                </div>
-                <div class="main-action-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- User Stats -->
-        <section class="user-stats">
-            <div class="user-card">
-                <div class="user-info">
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-details">
-                        <h3 id="userName">Foydalanuvchi</h3>
-                        <div class="user-id" id="userIdDisplay">ID: 12345678901</div>
-                        <div class="user-level" id="userLevel">YANGI</div>
-                    </div>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value" id="level">YANGI</div>
-                        <div class="stat-label" id="levelLabel">DARAJASI</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="invites">0</div>
-                        <div class="stat-label" id="invitesLabel">TAKLIFLAR</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="accuracy">0%</div>
-                        <div class="stat-label" id="accuracyLabel">ANIQLIK</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="friends">0</div>
-                        <div class="stat-label" id="friendsLabel">DO'STLAR</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Actions -->
-        <section class="quick-actions">
-            <div class="action-card" id="vipBtn">
-                <div class="action-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="action-title" id="vipTitle">VIP</div>
-                <div class="action-desc" id="vipDesc">Ekskluziv</div>
-            </div>
-            
-            <div class="action-card" id="apkBtn">
-                <div class="action-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="action-title" id="apkTitle">APK</div>
-                <div class="action-desc" id="apkDesc">Yuklab olish</div>
-            </div>
-            
-            <div class="action-card" id="bonusBtn">
-                <div class="action-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="action-title" id="bonusTitle">BONUS</div>
-                <div class="action-desc" id="bonusDesc">Promokodlar</div>
-            </div>
-            
-            <div class="action-card" id="settingsBtn2">
-                <div class="action-icon">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="action-title" id="settingsTitle">SOZLAMALAR</div>
-                <div class="action-desc" id="settingsDesc">Til va boshqalar</div>
-            </div>
-        </section>
-
-        <!-- VIP Banner -->
-        <section class="vip-banner" id="vipBanner">
-            <div class="vip-content">
-                <div class="vip-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="vip-text">
-                    <h3 id="vipBannerTitle">VIP A'ZO BO'LING</h3>
-                    <p id="vipBannerDesc">30% ko'proq bonus</p>
-                </div>
-            </div>
-            <div class="vip-badge">VIP</div>
-        </section>
-
-        <!-- Daily Statistics -->
-        <div class="section-header">
-            <h2 class="section-title" id="statsTitle">KUNLIK STATISTIKA</h2>
-        </div>
-        
-        <section class="stats-container">
-            <div class="stats-grid-small" id="statsGrid"></div>
-        </section>
-
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <div class="nav-item active" id="navHome">
-                <div class="nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="nav-text">ASOSIY</div>
-            </div>
-            
-            <div class="nav-item" id="navSignal">
-                <div class="nav-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="nav-text">SIGNAL</div>
-            </div>
-            
-            <div class="nav-item" id="navVip">
-                <div class="nav-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="nav-text">VIP</div>
-            </div>
-            
-            <div class="nav-item" id="navApk">
-                <div class="nav-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="nav-text">APK</div>
-            </div>
-            
-            <div class="nav-item" id="navSettings">
-                <div class="nav-icon">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="nav-text">SOZLAMALAR</div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- APK Page -->
-    <div class="page-container" id="apkPage">
-        <header class="page-header">
-            <div class="page-back" id="backFromApk">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="page-title" id="apkPageTitle">APK YUKLASH</div>
-        </header>
-        
-        <div class="page-content">
-            <div class="page-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="card-title" id="apkCardTitle">MOBIL ILOVA</div>
-                </div>
-                
-                <div class="card-value">
-                    APK YUKLASH
-                </div>
-                
-                <p class="card-desc" id="apkDescText">
-                    Mobil ilovani yuklab oling va istalgan joydan signallar oling.
-                    To'liq funksionallik va qulay interfeys.
-                </p>
-                
-                <button class="btn btn-primary" id="downloadApkBtn">
-                    <i class="fas fa-download"></i> <span id="downloadApkText">YUKLASH</span>
-                </button>
-                
-                <div class="promo-code">
-                    <div class="code">AIFUT</div>
-                    <div class="label">Promokod bilan ro'yxatdan o'ting</div>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="bottom-nav">
-            <div class="nav-item" id="navHome2">
-                <div class="nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="nav-text">ASOSIY</div>
-            </div>
-            
-            <div class="nav-item" id="navSignal2">
-                <div class="nav-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="nav-text">SIGNAL</div>
-            </div>
-            
-            <div class="nav-item" id="navVip2">
-                <div class="nav-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="nav-text">VIP</div>
-            </div>
-            
-            <div class="nav-item active" id="navApk2">
-                <div class="nav-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="nav-text">APK</div>
-            </div>
-            
-            <div class="nav-item" id="navSettings2">
-                <div class="nav-icon">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="nav-text">SOZLAMALAR</div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Settings Page -->
-    <div class="page-container" id="settingsPage">
-        <header class="page-header">
-            <div class="page-back" id="backFromSettings">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="page-title" id="settingsPageTitle">SOZLAMALAR</div>
-        </header>
-        
-        <div class="page-content">
-            <div class="settings-list">
-                <div class="settings-item" id="settingsLanguage">
-                    <div class="settings-item-left">
-                        <div class="settings-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="settings-text">
-                            <h4 id="settingsLanguageTitle">Tilni o'zgartirish</h4>
-                            <p id="settingsLanguageDesc">Dastur tilini tanlash</p>
-                        </div>
-                    </div>
-                    <div class="settings-arrow">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="bottom-nav">
-            <div class="nav-item" id="navHome3">
-                <div class="nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="nav-text">ASOSIY</div>
-            </div>
-            
-            <div class="nav-item" id="navSignal3">
-                <div class="nav-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="nav-text">SIGNAL</div>
-            </div>
-            
-            <div class="nav-item" id="navVip3">
-                <div class="nav-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="nav-text">VIP</div>
-            </div>
-            
-            <div class="nav-item" id="navApk3">
-                <div class="nav-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="nav-text">APK</div>
-            </div>
-            
-            <div class="nav-item active" id="navSettings3">
-                <div class="nav-icon">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="nav-text">SOZLAMALAR</div>
-            </div>
-        </nav>
-    </div>
-
-    <script>
-        // Tarjimalar obyekti
-        const translations = {
-            uz: {
-                languageTitle: "Apple of Fortune",
-                languageSubtitle: "Tilni tanlang",
-                logoText: "Apple of Fortune",
-                headerInstallText: "O'RNATISH",
-                installModalTitle: "Ilovani o'rnatish",
-                installModalText: "Ilovani telefoniga o'rnating va tez kirish imkoniyatiga ega bo'ling",
-                step1Text: "Ilova o'rnatish dialogi ochiladi",
-                step2Text: "\"O'rnatish\" tugmasini bosing",
-                step3Text: "Ilova uy ekraniga qo'shiladi",
-                installModalConfirm: "O'RNATISH",
-                installModalCancel: "BEKOR QILISH",
-                installActionTitle: "ILOVANI O'RNATISH",
-                installActionDesc: "Ilovani telefoniga o'rnating va tez kirish imkoniyatiga ega bo'ling",
-                installTitle: "Ilovani o'rnatish",
-                installDesc: "Tez kirish uchun ilovani telefoniga o'rnating",
-                installButton: "O'RNATISH",
-                cancelInstall: "YOPISH",
-                mainRegisterTitle: "RO'YXATDAN O'TISH",
-                mainRegisterDesc: "AIFUT promokodi bilan ro'yxatdan o'ting va yuqori aniqlikdagi signallarga ega bo'ling",
-                mainSignalTitle: "SIGNAL OLISH",
-                mainSignalDesc: "Yuqori aniqlikdagi signallarni olish uchun o'yinga kirish",
-                userName: "Foydalanuvchi",
-                userLevel: "YANGI",
-                levelLabel: "DARAJASI",
-                invitesLabel: "TAKLIFLAR",
-                accuracyLabel: "ANIQLIK",
-                friendsLabel: "DO'STLAR",
-                vipTitle: "VIP",
-                vipDesc: "Ekskluziv",
-                apkTitle: "APK",
-                apkDesc: "Yuklab olish",
-                bonusTitle: "BONUS",
-                bonusDesc: "Promokodlar",
-                settingsTitle: "SOZLAMALAR",
-                settingsDesc: "Til va boshqalar",
-                vipBannerTitle: "VIP A'ZO BO'LING",
-                vipBannerDesc: "30% ko'proq bonus",
-                statsTitle: "KUNLIK STATISTIKA",
-                dailyActive: "KUNLIK FAOL",
-                dailyAvgIncome: "O'RTACHA DAROMAD",
-                profit: "FOYDA",
-                onlinePlayers: "ONLAYN O'YINCHILAR",
-                apkPageTitle: "APK YUKLASH",
-                apkCardTitle: "MOBIL ILOVA",
-                apkDescText: "Mobil ilovani yuklab oling va istalgan joydan signallar oling. To'liq funksionallik va qulay interfeys.",
-                downloadApkText: "YUKLASH",
-                settingsPageTitle: "SOZLAMALAR",
-                settingsLanguageTitle: "Tilni o'zgartirish",
-                settingsLanguageDesc: "Dastur tilini tanlash"
-            },
-            ru: {
-                languageTitle: "Apple of Fortune",
-                languageSubtitle: "Выберите язык",
-                logoText: "Apple of Fortune",
-                headerInstallText: "УСТАНОВИТЬ",
-                installModalTitle: "Установить приложение",
-                installModalText: "Установите приложение на телефон для быстрого доступа",
-                step1Text: "Откроется диалог установки приложения",
-                step2Text: "Нажмите кнопку \"Установить\"",
-                step3Text: "Приложение добавится на домашний экран",
-                installModalConfirm: "УСТАНОВИТЬ",
-                installModalCancel: "ОТМЕНА",
-                installActionTitle: "УСТАНОВИТЬ ПРИЛОЖЕНИЕ",
-                installActionDesc: "Установите приложение на телефон для быстрого доступа",
-                installTitle: "Установить приложение",
-                installDesc: "Установите приложение на телефон для быстрого доступа",
-                installButton: "УСТАНОВИТЬ",
-                cancelInstall: "ЗАКРЫТЬ",
-                mainRegisterTitle: "РЕГИСТРАЦИЯ",
-                mainRegisterDesc: "Зарегистрируйтесь через промокод AIFUT и получите доступ к высокоточным сигналам",
-                mainSignalTitle: "ПОЛУЧИТЬ СИГНАЛ",
-                mainSignalDesc: "Войдите в игру, чтобы получить высокоточные сигналы",
-                userName: "Пользователь",
-                userLevel: "НОВЫЙ",
-                levelLabel: "УРОВЕНЬ",
-                invitesLabel: "ПРИГЛАШЕНИЯ",
-                accuracyLabel: "ТОЧНОСТЬ",
-                friendsLabel: "ДРУЗЬЯ",
-                vipTitle: "VIP",
-                vipDesc: "Эксклюзив",
-                apkTitle: "APK",
-                apkDesc: "Скачать",
-                bonusTitle: "БОНУС",
-                bonusDesc: "Промокоды",
-                settingsTitle: "НАСТРОЙКИ",
-                settingsDesc: "Язык и другое",
-                vipBannerTitle: "СТАНЬТЕ VIP",
-                vipBannerDesc: "30% больше бонуса",
-                statsTitle: "ЕЖЕДНЕВНАЯ СТАТИСТИКА",
-                dailyActive: "АКТИВНЫХ",
-                dailyAvgIncome: "СРЕДНИЙ ДОХОД",
-                profit: "ПРИБЫЛЬ",
-                onlinePlayers: "ОНЛАЙН ИГРОКОВ",
-                apkPageTitle: "СКАЧАТЬ APK",
-                apkCardTitle: "МОБИЛЬНОЕ ПРИЛОЖЕНИЕ",
-                apkDescText: "Скачайте мобильное приложение и получайте сигналы из любого места. Полная функциональность и удобный интерфейс.",
-                downloadApkText: "СКАЧАТЬ",
-                settingsPageTitle: "НАСТРОЙКИ",
-                settingsLanguageTitle: "Сменить язык",
-                settingsLanguageDesc: "Выберите язык приложения"
-            },
-            en: {
-                languageTitle: "Apple of Fortune",
-                languageSubtitle: "Select language",
-                logoText: "Apple of Fortune",
-                headerInstallText: "INSTALL",
-                installModalTitle: "Install App",
-                installModalText: "Install the app on your phone for quick access",
-                step1Text: "App installation dialog will open",
-                step2Text: "Press the \"Install\" button",
-                step3Text: "App will be added to home screen",
-                installModalConfirm: "INSTALL",
-                installModalCancel: "CANCEL",
-                installActionTitle: "INSTALL APP",
-                installActionDesc: "Install the app on your phone for quick access",
-                installTitle: "Install app",
-                installDesc: "Install the app on your phone for quick access",
-                installButton: "INSTALL",
-                cancelInstall: "CLOSE",
-                mainRegisterTitle: "REGISTER",
-                mainRegisterDesc: "Register with AIFUT promo code and get access to high accuracy signals",
-                mainSignalTitle: "GET SIGNAL",
-                mainSignalDesc: "Enter the game to get high accuracy signals",
-                userName: "User",
-                userLevel: "NEW",
-                levelLabel: "LEVEL",
-                invitesLabel: "INVITES",
-                accuracyLabel: "ACCURACY",
-                friendsLabel: "FRIENDS",
-                vipTitle: "VIP",
-                vipDesc: "Exclusive",
-                apkTitle: "APK",
-                apkDesc: "Download",
-                bonusTitle: "BONUS",
-                bonusDesc: "Promo codes",
-                settingsTitle: "SETTINGS",
-                settingsDesc: "Language and more",
-                vipBannerTitle: "BECOME VIP",
-                vipBannerDesc: "30% More Bonus",
-                statsTitle: "DAILY STATISTICS",
-                dailyActive: "DAILY ACTIVE",
-                dailyAvgIncome: "AVG INCOME",
-                profit: "PROFIT",
-                onlinePlayers: "ONLINE PLAYERS",
-                apkPageTitle: "DOWNLOAD APK",
-                apkCardTitle: "MOBILE APP",
-                apkDescText: "Download the mobile app and get signals from anywhere. Full functionality and convenient interface.",
-                downloadApkText: "DOWNLOAD",
-                settingsPageTitle: "SETTINGS",
-                settingsLanguageTitle: "Change Language",
-                settingsLanguageDesc: "Select app language"
-            },
-            ar: {
-                languageTitle: "Apple of Fortune",
-                languageSubtitle: "اختر اللغة",
-                logoText: "Apple of Fortune",
-                headerInstallText: "تثبيت",
-                installModalTitle: "تثبيت التطبيق",
-                installModalText: "قم بتثبيت التطبيق على هاتفك للوصول السريع",
-                step1Text: "سيفتح مربع حوار تثبيت التطبيق",
-                step2Text: "اضغط على زر \"تثبيت\"",
-                step3Text: "سيتم إضافة التطبيق إلى الشاشة الرئيسية",
-                installModalConfirm: "تثبيت",
-                installModalCancel: "إلغاء",
-                installActionTitle: "تثبيت التطبيق",
-                installActionDesc: "قم بتثبيت التطبيق على هاتفك للوصول السريع",
-                installTitle: "تثبيت التطبيق",
-                installDesc: "قم بتثبيت التطبيق على هاتفك للوصول السريع",
-                installButton: "تثبيت",
-                cancelInstall: "إغلاق",
-                mainRegisterTitle: "تسجيل",
-                mainRegisterDesc: "سجل من خلال الرمز الترويجي AIFUT واحصل على إشارات عالية الدقة",
-                mainSignalTitle: "الحصول على إشارة",
-                mainSignalDesc: "ادخل اللعبة للحصول على إشارات عالية الدقة",
-                userName: "المستخدم",
-                userLevel: "جديد",
-                levelLabel: "المستوى",
-                invitesLabel: "الدعوات",
-                accuracyLabel: "الدقة",
-                friendsLabel: "الأصدقاء",
-                vipTitle: "VIP",
-                vipDesc: "حصري",
-                apkTitle: "APK",
-                apkDesc: "تحميل",
-                bonusTitle: "مكافأة",
-                bonusDesc: "رموز ترويجية",
-                settingsTitle: "إعدادات",
-                settingsDesc: "اللغة والمزيد",
-                vipBannerTitle: "كن VIP",
-                vipBannerDesc: "30٪ مكافأة أكثر",
-                statsTitle: "الإحصائيات اليومية",
-                dailyActive: "نشط يوميًا",
-                dailyAvgIncome: "متوسط الدخل",
-                profit: "الربح",
-                onlinePlayers: "اللاعبون عبر الإنترنت",
-                apkPageTitle: "تحميل APK",
-                apkCardTitle: "التطبيق المحمول",
-                apkDescText: "قم بتنزيل التطبيق المحمول واحصل على إشارات من أي مكان. وظائف كاملة وواجهة مريحة.",
-                downloadApkText: "تحميل",
-                settingsPageTitle: "إعدادات",
-                settingsLanguageTitle: "تغيير اللغة",
-                settingsLanguageDesc: "اختر لغة التطبيق"
-            }
-        };
-
-        // O'zgaruvchilar
-        let currentLang = 'uz';
-        let deferredPrompt = null;
-        let isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-
-        // DOM yuklanganda
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tilni localStorage'dan olish
-            const savedLang = localStorage.getItem('appleFortuneLang');
-            if (savedLang) {
-                currentLang = savedLang;
-                selectLanguage(currentLang);
-            } else {
-                // Til tanlovini ko'rsatish
-                document.getElementById('languageSelector').style.display = 'flex';
-            }
-
-            setupEventListeners();
-            setupPWA();
-            updateDailyStats();
-        });
-
-        function selectLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('appleFortuneLang', lang);
-            
-            // Tarjimalarni yangilash
-            updateTranslations(lang);
-            
-            // Asosiy sahifani ko'rsatish
-            document.getElementById('languageSelector').style.display = 'none';
-            document.getElementById('mainContainer').classList.add('active');
-            
-            // O'rnatish bannerni tekshirish
-            checkInstallBanner();
-            updateHeaderInstallButton();
-        }
-
-        function updateTranslations(lang) {
-            const t = translations[lang];
-            
-            // Barcha elementlarni yangilash
-            const elements = document.querySelectorAll('[id]');
-            elements.forEach(element => {
-                const id = element.id;
-                if (t[id] !== undefined) {
-                    element.textContent = t[id];
-                }
-            });
-        }
-
-        function updateHeaderInstallButton() {
-            const headerInstallBtn = document.getElementById('headerInstallBtn');
-            if (isStandalone || !deferredPrompt) {
-                headerInstallBtn.classList.add('hidden');
-            } else {
-                headerInstallBtn.classList.remove('hidden');
-            }
-        }
-
-        function setupEventListeners() {
-            // Til tanlash
-            document.querySelectorAll('.lang-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    selectLanguage(lang);
-                });
-            });
-
-            // Header install button
-            document.getElementById('headerInstallBtn').addEventListener('click', showInstallModal);
-            
-            // Install modal
-            document.getElementById('installModalConfirm').addEventListener('click', installApp);
-            document.getElementById('installModalCancel').addEventListener('click', hideInstallModal);
-            
-            // O'rnatish banneri
-            document.getElementById('installButton').addEventListener('click', installApp);
-            document.getElementById('cancelInstall').addEventListener('click', hideInstallBanner);
-            
-            // O'rnatish kartasi
-            document.getElementById('installActionCard').addEventListener('click', showInstallModal);
-            
-            // Asosiy kartalar
-            document.getElementById('mainRegisterCard').addEventListener('click', () => {
-                window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
-                showToast('Ro\'yxatdan o\'tish sahifasi ochildi', 'success');
-            });
-            
-            document.getElementById('mainSignalCard').addEventListener('click', () => {
-                showToast('Signal olish o\'yini', 'info');
-            });
-            
-            // Tezkor harakatlar
-            document.getElementById('vipBtn').addEventListener('click', () => {
-                showToast('VIP imkoniyatlari', 'info');
-            });
-            
-            document.getElementById('vipBanner').addEventListener('click', () => {
-                showToast('VIP a\'zo bo\'lish', 'info');
-            });
-            
-            document.getElementById('apkBtn').addEventListener('click', () => {
-                showPage('apkPage');
-            });
-            
-            document.getElementById('bonusBtn').addEventListener('click', () => {
-                showToast('Bonuslar sahifasi', 'info');
-            });
-            
-            document.getElementById('settingsBtn').addEventListener('click', () => {
-                showPage('settingsPage');
-            });
-            
-            document.getElementById('settingsBtn2').addEventListener('click', () => {
-                showPage('settingsPage');
-            });
-            
-            // Navigation
-            document.getElementById('navHome').addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('navHome2').addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('navHome3').addEventListener('click', () => showPage('mainContainer'));
-            
-            document.getElementById('navSignal').addEventListener('click', () => showToast('Signal sahifasi', 'info'));
-            document.getElementById('navSignal2').addEventListener('click', () => showToast('Signal sahifasi', 'info'));
-            
-            document.getElementById('navVip').addEventListener('click', () => showToast('VIP sahifasi', 'info'));
-            document.getElementById('navVip2').addEventListener('click', () => showToast('VIP sahifasi', 'info'));
-            
-            document.getElementById('navApk').addEventListener('click', () => showPage('apkPage'));
-            document.getElementById('navApk2').addEventListener('click', () => showPage('apkPage'));
-            
-            document.getElementById('navSettings').addEventListener('click', () => showPage('settingsPage'));
-            document.getElementById('navSettings2').addEventListener('click', () => showPage('settingsPage'));
-            document.getElementById('navSettings3').addEventListener('click', () => showPage('settingsPage'));
-            
-            // Orqaga qaytish
-            document.getElementById('backFromApk').addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('backFromSettings').addEventListener('click', () => showPage('mainContainer'));
-            
-            // APK yuklash
-            document.getElementById('downloadApkBtn').addEventListener('click', () => {
-                window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
-                showToast('APK yuklab olish sahifasi ochildi', 'success');
-            });
-            
-            // Tilni o'zgartirish
-            document.getElementById('settingsLanguage').addEventListener('click', () => {
-                document.getElementById('languageSelector').style.display = 'flex';
-                document.getElementById('settingsPage').classList.remove('active');
-            });
-        }
-
-        function setupPWA() {
-            // Service Worker registratsiyasi
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('Service Worker registration failed:', error);
-                    });
-            }
-
-            // PWA o'rnatish hodisasi
-            window.addEventListener('beforeinstallprompt', (e) => {
-                console.log('beforeinstallprompt fired');
-                e.preventDefault();
-                deferredPrompt = e;
-                
-                // O'rnatish tugmasini yangilash
-                updateHeaderInstallButton();
-                
-                // O'rnatish bannerni ko'rsatish
-                setTimeout(() => {
-                    checkInstallBanner();
-                }, 3000);
-            });
-
-            window.addEventListener('appinstalled', () => {
-                console.log('appinstalled fired');
-                deferredPrompt = null;
-                isStandalone = true;
-                hideInstallBanner();
-                hideInstallModal();
-                updateHeaderInstallButton();
-                showToast('Ilova muvaffaqiyatli o\'rnatildi!', 'success');
-            });
-            
-            // Display mode o'zgarishini kuzatish
-            window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
-                isStandalone = e.matches;
-                updateHeaderInstallButton();
-            });
-            
-            // Telegram yoki Instagram kabi app-lardan ochilganda
-            detectInAppBrowser();
-        }
-
-        function detectInAppBrowser() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
-            // Telegram va Instagram user agent-lari
-            const isTelegram = /Telegram/.test(userAgent);
-            const isInstagram = /Instagram/.test(userAgent);
-            const isFacebook = /FBAN/.test(userAgent) || /FBAV/.test(userAgent);
-            
-            if (isTelegram || isInstagram || isFacebook) {
-                // In-app brauzerda ochilganda, install modalini avtomatik ochish
-                setTimeout(() => {
-                    if (!isStandalone && deferredPrompt) {
-                        showInstallModal();
-                    }
-                }, 2000);
-            }
-        }
-
-        function checkInstallBanner() {
-            if (!isStandalone && deferredPrompt && !localStorage.getItem('installBannerShown')) {
-                showInstallBanner();
-            }
-        }
-
-        function showInstallBanner() {
-            const banner = document.getElementById('installBanner');
-            banner.classList.add('active');
-            localStorage.setItem('installBannerShown', 'true');
-        }
-
-        function hideInstallBanner() {
-            const banner = document.getElementById('installBanner');
-            banner.classList.remove('active');
-        }
-
-        function showInstallModal() {
-            if (deferredPrompt) {
-                document.getElementById('installModal').classList.add('active');
-            } else {
-                // Agar PWA o'rnatish imkoniyati bo'lmasa
-                showToast('Ilovani o\'rnatish uchun iltimos, standart brauzerda oching', 'info');
-            }
-        }
-
-        function hideInstallModal() {
-            document.getElementById('installModal').classList.remove('active');
-        }
-
-        async function installApp() {
-            if (deferredPrompt) {
-                try {
-                    // Brauzer dialogini ochish
-                    console.log('Showing install prompt...');
-                    deferredPrompt.prompt();
-                    
-                    // Foydalanuvchi tanlovini kutish
-                    const { outcome } = await deferredPrompt.userChoice;
-                    console.log('User choice:', outcome);
-                    
-                    if (outcome === 'accepted') {
-                        deferredPrompt = null;
-                        showToast('Ilova o\'rnatilmoqda...', 'success');
-                        hideInstallModal();
-                        hideInstallBanner();
-                    } else {
-                        showToast('O\'rnatish bekor qilindi', 'info');
-                    }
-                } catch (error) {
-                    console.error('Install error:', error);
-                    showToast('O\'rnatishda xatolik yuz berdi. Iltimos, brauzerni ochib qayta urinib ko\'ring.', 'error');
-                    
-                    // Agar xatolik bo'lsa, foydalanuvchiga tashqi browser ochish imkoniyatini berish
-                    if (confirm('Ilovani o\'rnatish uchun standart brauzerga o\'tish kerak. Davom etasizmi?')) {
-                        window.open(window.location.href, '_blank');
-                    }
-                }
-            } else {
-                // Agar deferredPrompt yo'q bo'lsa, manual o'rnatish
-                showToast('Ilovani o'rnatish uchun standart brauzerda oching', 'info');
-                
-                // Foydalanuvchi roziligi bilan tashqi browser ochish
-                if (confirm('Ilovani o'rnatish uchun standart brauzerga o'tish kerak. Davom etasizmi?')) {
-                    window.open(window.location.href, '_blank');
-                }
-            }
-        }
-
-        function showPage(pageId) {
-            // Barcha sahifalarni yashirish
-            document.querySelectorAll('.main-container, .page-container').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Kerakli sahifani ko'rsatish
-            document.getElementById(pageId).classList.add('active');
-            
-            // Navigationni yangilash
-            updateNavState(pageId);
-        }
-
-        function updateNavState(pageId) {
-            // Barcha nav itemlarni reset qilish
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Active navigationni belgilash
-            if (pageId === 'mainContainer') {
-                document.getElementById('navHome').classList.add('active');
-                document.getElementById('navHome2').classList.add('active');
-                document.getElementById('navHome3').classList.add('active');
-            } else if (pageId === 'apkPage') {
-                document.getElementById('navApk').classList.add('active');
-                document.getElementById('navApk2').classList.add('active');
-            } else if (pageId === 'settingsPage') {
-                document.getElementById('navSettings').classList.add('active');
-                document.getElementById('navSettings2').classList.add('active');
-                document.getElementById('navSettings3').classList.add('active');
-            }
-        }
-
-        function showToast(message, type = 'info') {
-            // Avvalgi toastlarni o'chirish
-            document.querySelectorAll('.toast').forEach(toast => {
-                toast.remove();
-            });
-            
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.remove();
-                }
-            }, 3000);
-        }
-
-        // Kunlik statistikani yangilash
-        function updateDailyStats() {
-            const statsGrid = document.getElementById('statsGrid');
-            if (!statsGrid) return;
-            
-            const t = translations[currentLang];
-            statsGrid.innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-card-title">${t.dailyActive}</div>
-                    </div>
-                    <div class="stat-card-value">1,245</div>
-                    <div class="stat-card-label">AZOLAR</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-money-bill-wave"></i>
-                        </div>
-                        <div class="stat-card-title">${t.dailyAvgIncome}</div>
-                    </div>
-                    <div class="stat-card-value">$245</div>
-                    <div class="stat-card-label">KUNLIK</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="stat-card-title">${t.profit}</div>
-                    </div>
-                    <div class="stat-card-value">23.5%</div>
-                    <div class="stat-card-label">FOYDA</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <div class="stat-card-title">${t.onlinePlayers}</div>
-                    </div>
-                    <div class="stat-card-value">89</div>
-                    <div class="stat-card-label">ONLAYN</div>
-                </div>
-            `;
-        }
-    </script>
 </body>
 </html>
